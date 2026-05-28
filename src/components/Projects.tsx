@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
 
 export default function Projects() {
@@ -9,7 +10,7 @@ export default function Projects() {
       github: "#"
     },
     {
-      title: "SQL Warehouse System | SQL",
+      title: "SQL Warehouse System",
       description: "Designed structured SQL database for efficient data storage and retrieval. Improved query performance and maintained data integrity.",
       tech: ["SQL", "Database Design", "Performance Optimization"],
       github: "#"
@@ -23,21 +24,32 @@ export default function Projects() {
   ]
 
   return (
-    <section className="py-20 px-4">
+    <section className="py-32 px-4 bg-gray-950">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-white">Projects</h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          Projects
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <GlassCard key={index} title={project.title} description={project.description} tech={project.tech}>
-              <a 
-                href={project.github}
-                target="_blank"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 text-white rounded-lg hover:bg-white/30 transition-colors backdrop-blur-sm"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5 4.4 4.4 0 0 0-4-1.5 4.4 4.4 0 0 0-4 1.5 4.8 4.8 0 0 0-1 3.5v4"/><circle cx="9" cy="9" r="4"/><path d="M22 11.5V8A5.5 5.5 0 0 0 12.5 2.5 5.5 5.5 0 0 0 5 6.5v5a3 3 0 0 0 0 6h.5"/></svg>
-                View on GitHub
-              </a>
-            </GlassCard>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02, rotateX: 5, rotateY: 5 }}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <GlassCard title={project.title} description={project.description} tech={project.tech}>
+                <a 
+                  href={project.github}
+                  target="_blank"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 text-blue-300 rounded-lg hover:bg-blue-500/30 transition-colors border border-blue-500/20"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5 4.4 4.4 0 0 0-4-1.5 4.4 4.4 0 0 0-4 1.5 4.8 4.8 0 0 0-1 3.5v4"/><circle cx="9" cy="9" r="4"/><path d="M22 11.5V8A5.5 5.5 0 0 0 12.5 2.5 5.5 5.5 0 0 0 5 6.5v5a3 3 0 0 0 0 6h.5"/></svg>
+                  View on GitHub
+                </a>
+              </GlassCard>
+            </motion.div>
           ))}
         </div>
       </div>
