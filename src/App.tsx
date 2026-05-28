@@ -27,8 +27,15 @@ function App() {
     <div className="min-h-screen bg-gray-950 text-gray-200 overflow-x-hidden">
       <header className="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-sm border-b border-blue-500/20">
         <nav className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold text-white">AB</a>
-          <button 
+          <motion.a
+            href="#"
+            className="text-2xl font-bold text-blue-400"
+            whileHover={{ scale: 1.1, filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.8))" }}
+            transition={{ duration: 0.3 }}
+          >
+            AB
+          </motion.a>
+          <button
             className="md:hidden p-2 text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
