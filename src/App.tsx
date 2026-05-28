@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
 import Hero3D from './components/Hero3D'
@@ -12,7 +11,6 @@ import './App.css'
 
 function App() {
   const [activeSection, setActiveSection] = useState('home')
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const sections = {
     home: <Hero3DSection />,
@@ -26,7 +24,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-950 text-gray-200 overflow-x-hidden">
       <header className="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-sm border-b border-blue-500/20">
-        <nav className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+<nav className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
           <motion.a
             href="#"
             className="text-2xl font-bold text-blue-400"
@@ -35,18 +33,12 @@ function App() {
           >
             AB
           </motion.a>
-          <button
-            className="md:hidden p-2 text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-          <ul className={`md:flex md:space-x-8 ${isMenuOpen ? 'flex flex-col absolute top-full left-0 right-0 bg-gray-950 p-4 space-y-4' : 'hidden'}`}>
+          <ul className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 w-full md:w-auto">
             {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
               <li key={section}>
                 <button 
-                  onClick={() => { setActiveSection(section); setIsMenuOpen(false) }}
-                  className={`capitalize hover:text-blue-400 transition-colors ${activeSection === section ? 'text-blue-400 font-medium' : 'text-white'}`}
+                  onClick={() => setActiveSection(section)}
+                  className={`capitalize hover:text-blue-400 transition-colors text-sm md:text-base ${activeSection === section ? 'text-blue-400 font-medium' : 'text-white'}`}
                 >
                   {section}
                 </button>
