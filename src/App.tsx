@@ -20,7 +20,7 @@ function App() {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
-          if (rect.top <= 150 && rect.bottom >= 150) {
+          if (rect.top <= 200 && rect.bottom >= 200) {
             foundSection = section
             break
           }
@@ -48,7 +48,7 @@ function App() {
             onSetActive={() => setActiveSection('home')}
           >
             <motion.span
-              className="relative text-3xl md:text-4xl font-script tracking-wide"
+              className="text-3xl md:text-4xl font-script tracking-wide"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             >
@@ -105,42 +105,18 @@ function App() {
 
 function Hero3DSection() {
   return (
-    <section className="relative h-screen bg-gray-950">
+    <section className="relative h-screen bg-gray-950 overflow-hidden">
       <Hero3D />
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-12 bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-          HI, I'M ABHINAV
-        </h1>
-        
-        <div className="relative w-64 h-64 md:w-80 md:h-80 mb-12">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400/20 to-yellow-500/20 blur-2xl opacity-50"></div>
-          <div className="relative w-full h-full rounded-full border-2 border-amber-400/40 backdrop-blur-sm bg-gray-900/80 flex items-center justify-center overflow-hidden shadow-2xl shadow-amber-500/20">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <defs>
-                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#fde047" />
-                  <stop offset="50%" stopColor="#facc15" />
-                  <stop offset="100%" stopColor="#fbbf24" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                  <feMerge> 
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              <g className="font-script" style={{ fontFamily: 'Great Vibes', fontWeight: 700 }}>
-                <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="90" fill="url(#goldGradient)" filter="url(#glow)">AS</text>
-              </g>
-            </svg>
-            <div className="absolute bottom-2 left-0 w-full h-1/3 bg-gradient-to-t from-white/20 to-transparent opacity-30 rounded-full blur-sm"></div>
-          </div>
+      
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-8 md:left-16 lg:left-24 max-w-md z-10">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            HI, I'M ABHINAV
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300">
+            Software Development Engineer
+          </p>
         </div>
-        
-        <p className="text-xl md:text-2xl text-gray-300 max-w-2xl text-center mb-16">
-          Software Development Engineer building scalable applications with Python, React.js, and SQL
-        </p>
       </div>
       
       <motion.button
@@ -150,7 +126,7 @@ function Hero3DSection() {
         }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="absolute bottom-8 right-8 px-8 py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 font-semibold rounded-xl shadow-lg shadow-amber-500/40"
+        className="absolute bottom-8 right-8 px-8 py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 font-semibold rounded-xl shadow-lg shadow-amber-500/40 pointer-events-auto z-10"
       >
         CONTACT ME
       </motion.button>
