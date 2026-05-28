@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { motion, AnimatePresence } from 'framer-motion'
 import Hero3D from './components/Hero3D'
 import About from './components/About'
@@ -88,10 +89,10 @@ function Hero3DSection() {
           </p>
 <div className="flex justify-center gap-4">
              <a href="https://github.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="GitHub">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5 4.4 4.4 0 0 0-4-1.5 4.4 4.4 0 0 0-4 1.5 4.8 4.8 0 0 0-1 3.5v4"/><circle cx="9" cy="9" r="4"/><path d="M22 11.5V8A5.5 5.5 0 0 0 12.5 2.5 5.5 5.5 0 0 0 5 6.5v5a3 3 0 0 0 0 6h.5"/></svg>
+               <FaGithub size={24} className="text-blue-400" />
              </a>
              <a href="https://linkedin.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="LinkedIn">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 6 6 0 0 1-6-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/></svg>
+               <FaLinkedin size={24} className="text-blue-400" />
              </a>
            </div>
         </div>
