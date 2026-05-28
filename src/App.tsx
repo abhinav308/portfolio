@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-scroll'
 import Hero3D from './components/Hero3D'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -29,12 +30,7 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (section: string) => {
-    const element = document.getElementById(section)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  const navSections = ['about', 'experience', 'skills', 'projects', 'contact']
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-200 overflow-x-hidden">
@@ -42,7 +38,6 @@ function App() {
         <nav className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
           <motion.a
             href="#"
-            onClick={() => scrollToSection('about')}
             className="cursor-pointer"
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.3 }}
@@ -52,14 +47,27 @@ function App() {
             </span>
           </motion.a>
           <ul className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 w-full md:w-auto">
-            {['about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
+            {navSections.map((section) => (
               <li key={section}>
-                <button 
-                  onClick={() => scrollToSection(section)}
-                  className={`hover:text-blue-400 transition-colors text-sm md:text-base font-medium ${activeSection === section ? 'text-blue-400' : 'text-white'}`}
+                <Link
+                  to={section}
+                  smooth={true}
+                  duration={800}
+                  offset={-70}
+                  spy={true}
+                  activeClass="active-link"
+                  className={`hover:text-blue-400 transition-all text-sm md:text-base font-medium cursor-pointer relative ${
+                    activeSection === section 
+                      ? 'text-blue-400' 
+                      : 'text-white'
+                  }`}
+                  onSetActive={() => setActiveSection(section)}
                 >
                   {section.toUpperCase()}
-                </button>
+                  {activeSection === section && (
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-400 rounded-full"></span>
+                  )}
+                </Link>
               </li>
             ))}
           </ul>
