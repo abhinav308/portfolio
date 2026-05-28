@@ -45,11 +45,13 @@ function App() {
             onSetActive={() => setActiveSection('home')}
           >
             <motion.span
-              className="text-3xl md:text-4xl italic font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent border-b border-dashed border-blue-400/50 pb-1 inline-block"
+              className="relative text-3xl md:text-4xl font-script tracking-wide"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             >
-              AB
+              <span className="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent filter drop-shadow-[0_0_8px_rgba(251,191,36,0.5)] font-extrabold">
+                AS
+              </span>
             </motion.span>
           </Link>
           <ul className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 w-full md:w-auto">
@@ -103,14 +105,14 @@ function Hero3DSection() {
     <section className="relative h-screen bg-gray-950">
       <Hero3D />
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-        <h1 className="text-5xl md:text-7xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-5xl md:text-7xl font-bold mb-12 bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
           HI, I'M ABHINAV
         </h1>
         
         <div className="relative w-64 h-64 md:w-80 md:h-80 mb-12">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-30 animate-pulse"></div>
-          <div className="relative w-full h-full rounded-full border-2 border-blue-500/30 overflow-hidden bg-gray-800 flex items-center justify-center">
-            <span className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400/20 to-yellow-500/20 blur-2xl opacity-50"></div>
+          <div className="relative w-full h-full rounded-full border border-amber-400/30 overflow-hidden bg-gray-900 flex items-center justify-center">
+            <span className="text-7xl md:text-9xl font-script bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-400 bg-clip-text text-transparent filter drop-shadow-[0_0_30px_rgba(251,191,36,0.7)]">
               AS
             </span>
           </div>
@@ -128,7 +130,7 @@ function Hero3DSection() {
         }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="absolute bottom-8 right-8 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30"
+        className="absolute bottom-8 right-8 px-8 py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 font-semibold rounded-xl shadow-lg shadow-amber-500/40"
       >
         CONTACT ME
       </motion.button>
