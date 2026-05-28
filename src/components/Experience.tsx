@@ -24,12 +24,15 @@ export default function Experience() {
     }
   ]
 
-  return (
-    <section className="py-32 px-4 bg-gray-950 relative">
+return (
+    <section id="experience" className="py-20 px-4 bg-gray-950 relative scroll-mt-20">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent text-center">
           Experience
         </h2>
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          Professional experience spanning full-stack development and system optimization.
+        </p>
         <div className="relative">
           <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-blue-500/30"></div>
           {experiences.map((exp, index) => (

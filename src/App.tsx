@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Hero3D from './components/Hero3D'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -12,22 +12,39 @@ import './App.css'
 function App() {
   const [activeSection, setActiveSection] = useState('home')
 
-  const sections = {
-    home: <Hero3DSection />,
-    about: <About />,
-    skills: <Skills />,
-    experience: <Experience />,
-    projects: <Projects />,
-    contact: <Contact />
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact']
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.top <= 300 && rect.bottom >= 300) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToSection = (section: string) => {
+    const element = document.getElementById(section)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-200 overflow-x-hidden">
-      <header className="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-sm border-b border-blue-500/20">
-<nav className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
+      <header id="home" className="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-sm border-b border-blue-500/20">
+        <nav className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
           <motion.a
             href="#"
-            className="text-2xl font-bold text-blue-400"
+            onClick={() => scrollToSection('home')}
+            className="text-2xl font-bold text-blue-400 cursor-pointer"
             whileHover={{ scale: 1.1, filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.8))" }}
             transition={{ duration: 0.3 }}
           >
@@ -37,7 +54,7 @@ function App() {
             {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
               <li key={section}>
                 <button 
-                  onClick={() => setActiveSection(section)}
+                  onClick={() => scrollToSection(section)}
                   className={`capitalize hover:text-blue-400 transition-colors text-sm md:text-base ${activeSection === section ? 'text-blue-400 font-medium' : 'text-white'}`}
                 >
                   {section}
@@ -49,17 +66,12 @@ function App() {
       </header>
 
       <main>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeSection}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            {sections[activeSection as keyof typeof sections]}
-          </motion.div>
-        </AnimatePresence>
+        <Hero3DSection />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Contact />
       </main>
 
       <footer className="py-8 px-4 border-t border-blue-500/20">
@@ -86,14 +98,14 @@ function Hero3DSection() {
           <p className="text-lg max-w-2xl mx-auto mb-12 text-gray-300">
             Building scalable applications with Python, React.js, and SQL. Experienced in AI-driven solutions and ERP systems.
           </p>
-<div className="flex justify-center gap-4">
-             <a href="https://github.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="GitHub">
-               <FaGithub size={24} className="text-blue-400" />
-             </a>
-             <a href="https://linkedin.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="LinkedIn">
-               <FaLinkedin size={24} className="text-blue-400" />
-             </a>
-           </div>
+          <div className="flex justify-center gap-4">
+            <a href="https://github.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="GitHub">
+              <FaGithub size={24} className="text-blue-400" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="LinkedIn">
+              <FaLinkedin size={24} className="text-blue-400" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -8,12 +8,15 @@ export default function Contact() {
   }
 
   return (
-    <section className="py-32 px-4 bg-gray-950">
+    <section id="contact" className="py-20 px-4 bg-gray-900 scroll-mt-20">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent text-center">
           Get In Touch
         </h2>
-        
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          Feel free to reach out for collaboration or opportunities.
+        </p>
+
         <div className="max-w-md mx-auto">
           <motion.button
             onClick={handleEmailClick}
@@ -25,7 +28,7 @@ export default function Contact() {
             <Mail size={24} />
             Email Me
           </motion.button>
-          
+
           <div className="flex justify-center gap-6 mt-12">
             <a
               href="https://linkedin.com"

@@ -31,11 +31,14 @@ export default function Skills() {
   ]
 
   return (
-    <section className="py-32 px-4 bg-gray-950">
+    <section id="skills" className="py-20 px-4 bg-gray-900 scroll-mt-20">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent text-center">
           Technical Skills
         </h2>
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          Technologies and tools I work with.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
             <motion.div
