@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import Hero3D from './components/Hero3D'
 import About from './components/About'
@@ -10,11 +9,11 @@ import Contact from './components/Contact'
 import './App.css'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('about')
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact']
+      const sections = ['about', 'skills', 'experience', 'projects', 'contact']
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -43,7 +42,7 @@ function App() {
         <nav className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
           <motion.a
             href="#"
-            onClick={() => scrollToSection('home')}
+            onClick={() => scrollToSection('about')}
             className="text-2xl font-bold text-blue-400 cursor-pointer"
             whileHover={{ scale: 1.1, filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.8))" }}
             transition={{ duration: 0.3 }}
@@ -51,13 +50,13 @@ function App() {
             AB
           </motion.a>
           <ul className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 w-full md:w-auto">
-            {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
+            {['about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
               <li key={section}>
                 <button 
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize hover:text-blue-400 transition-colors text-sm md:text-base ${activeSection === section ? 'text-blue-400 font-medium' : 'text-white'}`}
+                  className={`hover:text-blue-400 transition-colors text-sm md:text-base font-medium ${activeSection === section ? 'text-blue-400' : 'text-white'}`}
                 >
-                  {section}
+                  {section.toUpperCase()}
                 </button>
               </li>
             ))}
@@ -85,29 +84,38 @@ function App() {
 
 function Hero3DSection() {
   return (
-    <section className="relative h-screen">
+    <section className="relative h-screen bg-gray-950">
       <Hero3D />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Abhinav Singh
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-400 mb-8">
-            Software Development Engineer
-          </p>
-          <p className="text-lg max-w-2xl mx-auto mb-12 text-gray-300">
-            Building scalable applications with Python, React.js, and SQL. Experienced in AI-driven solutions and ERP systems.
-          </p>
-          <div className="flex justify-center gap-4">
-            <a href="https://github.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="GitHub">
-              <FaGithub size={24} className="text-blue-400" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" className="p-3 bg-white/5 rounded-full hover:bg-blue-500/20 transition-colors border border-blue-500/20" aria-label="LinkedIn">
-              <FaLinkedin size={24} className="text-blue-400" />
-            </a>
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+        <h1 className="text-5xl md:text-7xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          HI, I'M ABHINAV
+        </h1>
+        
+        <div className="relative w-64 h-64 md:w-80 md:h-80 mb-12">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 blur-xl opacity-30 animate-pulse"></div>
+          <div className="relative w-full h-full rounded-full border-2 border-blue-500/30 overflow-hidden bg-gray-800 flex items-center justify-center">
+            <span className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              AS
+            </span>
           </div>
         </div>
+        
+        <p className="text-xl md:text-2xl text-gray-300 max-w-2xl text-center mb-16">
+          Software Development Engineer building scalable applications with Python, React.js, and SQL
+        </p>
       </div>
+      
+      <motion.button
+        onClick={() => {
+          const contactEl = document.getElementById('contact')
+          if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' })
+        }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="absolute bottom-8 right-8 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30"
+      >
+        CONTACT ME
+      </motion.button>
     </section>
   )
 }
