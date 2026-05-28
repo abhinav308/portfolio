@@ -10,22 +10,25 @@ import Contact from './components/Contact'
 import './App.css'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('home')
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact']
+      let foundSection = ''
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section)
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            foundSection = section
             break
           }
         }
       }
+      setActiveSection(foundSection)
     }
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -111,10 +114,27 @@ function Hero3DSection() {
         
         <div className="relative w-64 h-64 md:w-80 md:h-80 mb-12">
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400/20 to-yellow-500/20 blur-2xl opacity-50"></div>
-          <div className="relative w-full h-full rounded-full border border-amber-400/30 overflow-hidden bg-gray-900 flex items-center justify-center">
-            <span className="text-7xl md:text-9xl font-script bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-400 bg-clip-text text-transparent filter drop-shadow-[0_0_30px_rgba(251,191,36,0.7)]">
-              AS
-            </span>
+          <div className="relative w-full h-full rounded-full border-2 border-amber-400/40 backdrop-blur-sm bg-gray-900/80 flex items-center justify-center overflow-hidden shadow-2xl shadow-amber-500/20">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#fde047" />
+                  <stop offset="50%" stopColor="#facc15" />
+                  <stop offset="100%" stopColor="#fbbf24" />
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge> 
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <g className="font-script" style={{ fontFamily: 'Great Vibes', fontWeight: 700 }}>
+                <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fontSize="90" fill="url(#goldGradient)" filter="url(#glow)">AS</text>
+              </g>
+            </svg>
+            <div className="absolute bottom-2 left-0 w-full h-1/3 bg-gradient-to-t from-white/20 to-transparent opacity-30 rounded-full blur-sm"></div>
           </div>
         </div>
         
