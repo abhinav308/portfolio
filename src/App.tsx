@@ -43,11 +43,13 @@ function App() {
           <motion.a
             href="#"
             onClick={() => scrollToSection('about')}
-            className="text-2xl font-bold text-blue-400 cursor-pointer"
-            whileHover={{ scale: 1.1, filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.8))" }}
+            className="cursor-pointer"
+            whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.3 }}
           >
-            AB
+            <span className="text-3xl md:text-4xl italic font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent border-b border-dashed border-blue-400/50 pb-1">
+              AB
+            </span>
           </motion.a>
           <ul className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 w-full md:w-auto">
             {['about', 'experience', 'skills', 'projects', 'contact'].map((section) => (
