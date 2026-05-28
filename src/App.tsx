@@ -10,16 +10,16 @@ import Contact from './components/Contact'
 import './App.css'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('about')
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'skills', 'experience', 'projects', 'contact']
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact']
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
           const rect = element.getBoundingClientRect()
-          if (rect.top <= 300 && rect.bottom >= 300) {
+          if (rect.top <= 100 && rect.bottom >= 100) {
             setActiveSection(section)
             break
           }
@@ -36,16 +36,22 @@ function App() {
     <div className="min-h-screen bg-gray-950 text-gray-200 overflow-x-hidden">
       <header id="home" className="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-sm border-b border-blue-500/20">
         <nav className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center md:justify-between gap-4">
-          <motion.a
-            href="#"
+          <Link
+            to="home"
+            smooth={true}
+            duration={800}
+            offset={-70}
             className="cursor-pointer"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
+            onSetActive={() => setActiveSection('home')}
           >
-            <span className="text-3xl md:text-4xl italic font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent border-b border-dashed border-blue-400/50 pb-1">
+            <motion.span
+              className="text-3xl md:text-4xl italic font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent border-b border-dashed border-blue-400/50 pb-1 inline-block"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+            >
               AB
-            </span>
-          </motion.a>
+            </motion.span>
+          </Link>
           <ul className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 w-full md:w-auto">
             {navSections.map((section) => (
               <li key={section}>
