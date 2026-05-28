@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Menu, X, Mail } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import AboutAndSkills from './components/AboutAndSkills'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
@@ -52,17 +52,14 @@ function App() {
                 <p className="text-lg max-w-2xl mx-auto mb-12 text-gray-300">
                   Building scalable applications with Python, React.js, and SQL. Experienced in AI-driven solutions and ERP systems.
                 </p>
-                <div className="flex justify-center gap-4">
-                  <a href="https://github.com" target="_blank" className="p-3 bg-gray-800 rounded-full hover:bg-purple-900/30 transition-colors" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5 4.4 4.4 0 0 0-4-1.5 4.4 4.4 0 0 0-4 1.5 4.8 4.8 0 0 0-1 3.5v4"/><circle cx="9" cy="9" r="4"/><path d="M22 11.5V8A5.5 5.5 0 0 0 12.5 2.5 5.5 5.5 0 0 0 5 6.5v5a3 3 0 0 0 0 6h.5"/></svg>
-                  </a>
-                  <a href="https://linkedin.com" target="_blank" className="p-3 bg-gray-800 rounded-full hover:bg-purple-900/30 transition-colors" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 6 6 0 0 1-6-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/></svg>
-                  </a>
-                  <a href="mailto:abhinavrajput308@gmail.com" className="p-3 bg-gray-800 rounded-full hover:bg-purple-900/30 transition-colors" aria-label="Email">
-                    <Mail size={24} className="text-white" />
-                  </a>
-                </div>
+<div className="flex justify-center gap-4">
+                   <a href="https://github.com" target="_blank" className="p-3 bg-gray-800 rounded-full hover:bg-purple-900/30 transition-colors" aria-label="GitHub">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5 4.4 4.4 0 0 0-4-1.5 4.4 4.4 0 0 0-4 1.5 4.8 4.8 0 0 0-1 3.5v4"/><circle cx="9" cy="9" r="4"/><path d="M22 11.5V8A5.5 5.5 0 0 0 12.5 2.5 5.5 5.5 0 0 0 5 6.5v5a3 3 0 0 0 0 6h.5"/></svg>
+                   </a>
+                   <a href="https://linkedin.com" target="_blank" className="p-3 bg-gray-800 rounded-full hover:bg-purple-900/30 transition-colors" aria-label="LinkedIn">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 6 6 0 0 1-6-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/></svg>
+                   </a>
+                 </div>
               </div>
             </div>
           </div>
