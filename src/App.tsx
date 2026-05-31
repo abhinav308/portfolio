@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-scroll'
-import { Suspense } from 'react'
 import SpiderScene from './components/SpiderScene'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -142,18 +141,7 @@ function App() {
 function Hero3DSection() {
   return (
     <section className="relative h-screen">
-      <Suspense fallback={
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-900">
-          <div className="text-center">
-            <div className="w-48 h-2 bg-gray-800 rounded-full overflow-hidden mb-4">
-              <div className="h-full bg-gradient-to-r from-red-600 to-blue-600 animate-pulse" style={{ width: '100%' }} />
-            </div>
-            <p className="text-cyan-400 font-bold">Loading Spider-Verse...</p>
-          </div>
-        </div>
-      }>
-        <SpiderScene />
-      </Suspense>
+      <SpiderScene />
       
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 pointer-events-none">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 w-full">
