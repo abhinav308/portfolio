@@ -47,11 +47,11 @@ function App() {
             onSetActive={() => setActiveSection('home')}
           >
             <motion.span
-              className="text-3xl md:text-4xl font-bold tracking-wide"
+              className="text-3xl md:text-4xl font-script tracking-wide"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="text-blue-400">
+              <span className="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent filter drop-shadow-[0_0_8px_rgba(251,191,36,0.5)] font-extrabold">
                 AS
               </span>
             </motion.span>
@@ -119,15 +119,21 @@ function Hero3DSection() {
           <motion.div
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
+            className="relative w-64 h-64 md:w-80 md:h-80"
           >
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-amber-400/50 shadow-2xl shadow-amber-500/30 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+            <motion.div
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-400/30 to-yellow-500/30 blur-xl"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <div className="relative w-full h-full rounded-full border-2 border-amber-400/40 backdrop-blur-sm bg-gray-900/80 flex items-center justify-center overflow-hidden shadow-2xl shadow-amber-500/30">
               <img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1f813e0181?w=400&h=400&fit=crop&crop=face"
                 alt="Abhinav Singh"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
+            <div className="absolute -bottom-2 left-0 w-full h-1/3 bg-gradient-to-t from-white/20 to-transparent opacity-30 rounded-full blur-sm"></div>
           </motion.div>
         </div>
       </div>
