@@ -141,7 +141,9 @@ function App() {
 function Hero3DSection() {
   return (
     <section className="relative h-screen">
-      <SpiderScene />
+      <div className="absolute inset-0">
+        <SpiderScene />
+      </div>
       
       <div className="absolute inset-0 flex flex-col items-center justify-center px-4 pointer-events-none">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 w-full">
