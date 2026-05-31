@@ -47,11 +47,11 @@ function App() {
             onSetActive={() => setActiveSection('home')}
           >
             <motion.span
-              className="text-3xl md:text-4xl font-script tracking-wide"
+              className="text-3xl md:text-4xl font-bold tracking-wide"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent filter drop-shadow-[0_0_8px_rgba(251,191,36,0.5)] font-extrabold">
+              <span className="text-blue-400">
                 AS
               </span>
             </motion.span>
