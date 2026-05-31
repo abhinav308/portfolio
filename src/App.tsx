@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-scroll'
-import Hero3D from './components/Hero3D'
 import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
@@ -105,17 +104,31 @@ function App() {
 
 function Hero3DSection() {
   return (
-    <section className="relative h-screen bg-gray-950 overflow-hidden">
-      <Hero3D />
-      
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-8 md:left-16 lg:left-24 max-w-md z-10">
+    <section className="relative h-screen bg-gray-950 flex items-center justify-center px-4">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16">
+        <div className="flex-1 text-center md:text-left">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
             HI, I'M ABHINAV
           </h1>
-          <p className="text-lg md:text-xl text-gray-300">
+          <p className="text-lg md:text-xl text-gray-300 mb-8">
             Software Development Engineer
           </p>
+        </div>
+        
+        <div className="flex-1 flex justify-center md:justify-end">
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+          >
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-amber-400/50 shadow-2xl shadow-amber-500/30 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1f813e0181?w=400&h=400&fit=crop&crop=face"
+                alt="Abhinav Singh"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
       
@@ -126,7 +139,7 @@ function Hero3DSection() {
         }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="absolute bottom-8 right-8 px-8 py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 font-semibold rounded-xl shadow-lg shadow-amber-500/40 pointer-events-auto z-10"
+        className="absolute bottom-8 right-8 px-8 py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-gray-900 font-semibold rounded-xl shadow-lg shadow-amber-500/40 pointer-events-auto"
       >
         CONTACT ME
       </motion.button>
