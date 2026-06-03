@@ -155,20 +155,6 @@ function Hero3DSection() {
           </div>
           
           <div className="flex-1 flex justify-center md:justify-end pointer-events-auto">
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-red-500/50 shadow-2xl shadow-red-500/30 overflow-hidden bg-gradient-to-br from-slate-800 to-blue-900/50"
-              style={{ 
-                boxShadow: '0 0 30px rgba(220, 38, 38, 0.4), inset 0 0 20px rgba(14, 165, 233, 0.2)'
-              }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1f813e0181?w=400&h=400&fit=crop&crop=face"
-                alt="Abhinav Singh"
-                className="w-full h-full object-cover rounded-full"
-              />
-            </motion.div>
           </div>
         </div>
       </div>
