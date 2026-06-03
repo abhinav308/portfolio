@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrbitControls, Environment } from '@react-three/drei'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import * as THREE from 'three'
 
 function CitySkyline() {
@@ -32,42 +32,6 @@ function CitySkyline() {
   return <group ref={groupRef}>{buildings}</group>
 }
 
-function SpiderOrb() {
-  const meshRef = useRef<THREE.Mesh>(null!)
-  const { mouse } = useThree()
-  const [hovered, setHovered] = useState(false)
-
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime()
-    if (meshRef.current) {
-      meshRef.current.rotation.y = time * 0.5
-      meshRef.current.rotation.x = time * 0.3 + mouse.y * 0.2
-      meshRef.current.position.x = mouse.x * 0.3
-      meshRef.current.position.y = mouse.y * 0.2
-    }
-  })
-
-  return (
-    <group onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)}>
-      <mesh ref={meshRef} scale={2}>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshPhysicalMaterial
-          color="#dc2626"
-          emissive={hovered ? "#facc15" : "#dc2626"}
-          emissiveIntensity={hovered ? 0.8 : 0.2}
-          metalness={0.7}
-          roughness={0.2}
-          clearcoat={1}
-        />
-      </mesh>
-      <mesh scale={2.1}>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshBasicMaterial color="#0ea5e9" transparent opacity={0.1} />
-      </mesh>
-    </group>
-  )
-}
-
 export default function SpiderScene() {
   return (
     <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
@@ -76,7 +40,6 @@ export default function SpiderScene() {
       <directionalLight position={[10, 10, 5]} intensity={1.5} color="#dc2626" />
       <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#0ea5e9" />
       <CitySkyline />
-      <SpiderOrb />
       <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
     </Canvas>
   )
