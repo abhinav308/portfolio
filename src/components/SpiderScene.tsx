@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { OrbitControls, Environment, useGLTF, Html } from '@react-three/drei'
-import { Suspense, useRef, useState } from 'react'
+import { OrbitControls, Environment } from '@react-three/drei'
+import { useRef, useState } from 'react'
 import * as THREE from 'three'
 
 function CitySkyline() {
@@ -32,30 +32,38 @@ function CitySkyline() {
   return <group ref={groupRef}>{buildings}</group>
 }
 
-function SpiderModel() {
-  const groupRef = useRef<THREE.Group>(null!)
+function SpiderOrb() {
+  const meshRef = useRef<THREE.Mesh>(null!)
   const { mouse } = useThree()
   const [hovered, setHovered] = useState(false)
-  
-  // Load GLTF model
-  const { scene } = useGLTF('/spider.glb')
-  
+
   useFrame((state) => {
     const time = state.clock.getElapsedTime()
-    if (groupRef.current) {
-      groupRef.current.rotation.y = time * 0.5
-      groupRef.current.rotation.x = time * 0.3 + mouse.y * 0.2
-      groupRef.current.position.x = mouse.x * 0.3
-      groupRef.current.position.y = mouse.y * 0.2
+    if (meshRef.current) {
+      meshRef.current.rotation.y = time * 0.5
+      meshRef.current.rotation.x = time * 0.3 + mouse.y * 0.2
+      meshRef.current.position.x = mouse.x * 0.3
+      meshRef.current.position.y = mouse.y * 0.2
     }
   })
 
   return (
-    <group ref={groupRef} onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)}>
-      <primitive object={scene} scale={2} />
-      {hovered && (
-        <pointLight color="#facc15" intensity={1} distance={3} position={[0, 0, 0]} />
-      )}
+    <group onPointerOver={() => setHovered(true)} onPointerOut={() => setHovered(false)}>
+      <mesh ref={meshRef} scale={2}>
+        <sphereGeometry args={[1, 32, 32]} />
+        <meshPhysicalMaterial
+          color="#dc2626"
+          emissive={hovered ? "#facc15" : "#dc2626"}
+          emissiveIntensity={hovered ? 0.8 : 0.2}
+          metalness={0.7}
+          roughness={0.2}
+          clearcoat={1}
+        />
+      </mesh>
+      <mesh scale={2.1}>
+        <sphereGeometry args={[1, 32, 32]} />
+        <meshBasicMaterial color="#0ea5e9" transparent opacity={0.1} />
+      </mesh>
     </group>
   )
 }
@@ -68,15 +76,7 @@ export default function SpiderScene() {
       <directionalLight position={[10, 10, 5]} intensity={1.5} color="#dc2626" />
       <directionalLight position={[-10, -10, -5]} intensity={0.5} color="#0ea5e9" />
       <CitySkyline />
-      <Suspense fallback={
-        <Html center>
-          <div className="text-cyan-400 font-bold">
-            Loading Spider-Verse...
-          </div>
-        </Html>
-      }>
-        <SpiderModel />
-      </Suspense>
+      <SpiderOrb />
       <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
     </Canvas>
   )
